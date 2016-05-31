@@ -18,6 +18,16 @@ refute() {
   fi
 }
 
+run_assert() {
+  run "$@"
+  assert_success
+}
+
+run_refute() {
+  run "$@"
+  assert_failure
+}
+
 assert_success() {
   if [ "$status" -ne 0 ]; then
     { echo "command failed with exit status $status"
